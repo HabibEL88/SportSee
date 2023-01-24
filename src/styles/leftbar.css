@@ -1,9 +1,8 @@
 .leftbar{ 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
     padding: 6em 1em 1em;
     font-size: 1.2rem;
     background-color: #020203;

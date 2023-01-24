@@ -2,18 +2,36 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import loader from "./loaders/redirect";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect,
+} from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
 const router = createBrowserRouter([
   {
     path: "*",
-    loader: loader,
+    loader: async () => {
+      return redirect("/user/12");
+    },
   },
   {
     path: "/user/:id",
     element: <App />,
+    loader: async ({ params }) => {
+      const result = (
+        await Promise.all([
+          fetch(`http://localhost:3001/user/${params.id}`),
+          fetch(`http://localhost:3001/user/${params.id}/activity`),
+          fetch(`http://localhost:3001/user/${params.id}/average-sessions`),
+          fetch(`http://localhost:3001/user/${params.id}/performance`),
+        ])
+      ).map((r) => r.json());
+
+      const [user, activity, average, performance] = await Promise.all(result);
+      return { user, activity, average, performance };
+    },
   },
 ]);
 
