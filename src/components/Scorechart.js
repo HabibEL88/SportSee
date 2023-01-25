@@ -1,0 +1,86 @@
+import React from "react";
+import styled from "styled-components";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+
+import "../styles/components/scorechart.css";
+
+const Title = styled.h2`
+  position: absolute;
+  left: 20%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #20253a;
+  font-weight: 700;
+`;
+
+const Text = styled.p`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 700;
+  text-align: center;
+  color: #74798c;
+`;
+
+const Score = styled.span`
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 700;
+  font-size: 26px;
+`;
+
+const Scorechart = ({ data }) => {
+  const fakePie = [{ value: 100 }];
+
+  const score = [
+    { value: data.todayScore || data.score },
+    { value: 1 - data.todayScore || data.score },
+  ];
+
+  return (
+    <div className="scorechart">
+      <Title>Score</Title>
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={fakePie}
+            cx="50%"
+            cy="50%"
+            outerRadius={85}
+            dataKey="value"
+            fill="#FFFFFF"
+          />
+          <Pie
+            data={score}
+            dataKey="value"
+            innerRadius={70}
+            outerRadius={85}
+            startAngle={90}
+            endAngle={450}
+          >
+            {score.map((entry, index) =>
+              index === 0 ? (
+                <Cell key={`cell-${index}`} cornerRadius={10} fill="#ff0000" />
+              ) : (
+                <Cell key={`cell-${index}`} fill="#FBFBFB" />
+              )
+            )}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <Text>
+        <Score>
+          {score[0].value * 100}%<br />
+        </Score>
+        de votre
+        <br /> objectif
+      </Text>
+    </div>
+  );
+};
+export default Scorechart;
