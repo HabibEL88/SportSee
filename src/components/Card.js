@@ -31,7 +31,7 @@ const Card = ({ Key, value }) => {
     <div className="card">
       <MaterialIcons bgcolor={bgColor} icon={logo} />
       <div className="content">
-        <p className="info">{`${value} ${unit}`}</p>
+        <p className="info">{`${value}${unit}`}</p>
         <p className="text">{text}</p>
       </div>
     </div>

@@ -7,7 +7,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import "../styles/components/sessionchart.css";
+import "../styles/sessionchart.css";
 
 const Sessionchart = ({ data }) => {
   const formatXAxis = (tickItem) => {

@@ -3,10 +3,10 @@ import Sessionchart from "../components/Sessionchart";
 import Performancechart from "../components/Performancechart";
 import Scorechart from "../components/Scorechart";
 import Card from "../components/Card";
-import "../styles/components/bottomgraph.css";
-import "../styles/components/container.css";
-import "../styles/components/rightContainer.css";
-import "../styles/components/dashboard.css";
+import "../styles/bottomgraph.css";
+import "../styles/container.css";
+import "../styles/rightContainer.css";
+import "../styles/dashboard.css";
 import { useLoaderData } from "react-router-dom";
 
 const Dashboard = () => {
@@ -19,8 +19,10 @@ const Dashboard = () => {
   console.log(user);
 
   return (
-    <div>
-      <h1>Bonjour {user.userInfos.firstName}</h1>
+    <div className="firstcontainer">
+      <h1 className="username">
+        Bonjour <span style={{ color: "red" }}>{user.userInfos.firstName}</span>
+      </h1>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       <div className="container">
         <div className="leftContainer">

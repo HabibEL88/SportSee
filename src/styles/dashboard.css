@@ -1,8 +1,12 @@
 .Dashboard{
-    margin: 7em 9em 9em 10em;
+    margin: 2em 9em 9em 6em;
     width: 100%;
 }
+.firstcontainer .username{
+    font-size: 48px;
+}
 
+/* ----------------LEFT CONTAINER------------------- */
 .leftContainer {
     display: flex;
     flex-direction: column;
@@ -15,3 +19,5 @@
     height: 320px;
     background-color: #FBFBFB;
 }
+
+/* ----------------LEFT CONTAINER------------------- */

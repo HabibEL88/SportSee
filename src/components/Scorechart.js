@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-import "../styles/components/scorechart.css";
+import "../styles/scorechart.css";
 
 const Title = styled.h2`
   position: absolute;

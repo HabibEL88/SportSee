@@ -7,7 +7,7 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
-import "../styles/components/Performancechart.css";
+import "../styles/Performancechart.css";
 
 const Performancechart = ({ data }) => {
   const getKindValue = (kindData) => {
