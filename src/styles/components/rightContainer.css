@@ -1,0 +1,17 @@
+.card{
+    display: flex;
+    background-color: #FBFBFB;
+    align-items: center;
+    width: 280px;
+    height: 130px;
+    padding-left: 32px;
+}
+.info{
+    font-weight: bold   ;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

@@ -35,8 +35,6 @@ const Sessionchart = ({ data }) => {
       </div>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          width={360}
-          height={125}
           data={data}
           margin={{ top: 0, left: 15, right: 15, bottom: 10 }}
         >
