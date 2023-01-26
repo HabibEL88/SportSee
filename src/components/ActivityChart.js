@@ -10,6 +10,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import "../styles/activitychart.css";
+
 const Activity = ({ data }) => {
   const formatXAxis = (tickItem) => {
     const date = new Date(tickItem);
@@ -37,7 +39,10 @@ const Activity = ({ data }) => {
   };
   return (
     <div className="Activity">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer
+        className="responsive-container"
+        style={{ padding: "20px" }}
+      >
         <BarChart data={data} barGap={8}>
           <XAxis
             dataKey="day"
@@ -59,22 +64,30 @@ const Activity = ({ data }) => {
           <YAxis yAxisId="left" dataKey="calories" domain={[0, "auto"]} hide />
 
           <text
-            x={110}
-            y={20}
+            x={120}
+            y={30}
             fill="black"
             textAnchor="middle"
             dominantBaseline="central"
           >
-            <tspan fontSize="24">Activité quotidienne</tspan>
+            <tspan className="titleactivity">Activité quotidienne</tspan>
           </text>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <Tooltip
-            wrapperStyle={{ backgroundColor: "red", outline: "none" }}
+            wrapperStyle={{
+              backgroundColor: "red",
+              outline: "none",
+            }}
             content={<CustomTooltip />}
           />
           <Legend
             marginBottom={10}
             align="right"
+            wrapperStyle={
+              {
+                /* paddingTop: "calc(2px + 1.5625vw)" */
+              }
+            }
             verticalAlign="top"
             iconType="circle"
             iconSize={10}
