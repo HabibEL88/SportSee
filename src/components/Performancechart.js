@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "../styles/Performancechart.css";
+import "../styles/dashboard.css";
 
 const Performancechart = ({ data }) => {
   const getKindValue = (kindData) => {
@@ -16,7 +17,7 @@ const Performancechart = ({ data }) => {
 
   return (
     <div className="chart-performance">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer className="responsive-container" aspect={1}>
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data.data}>
           <PolarGrid gridType="polygon" radialLines={false} />
           <PolarAngleAxis

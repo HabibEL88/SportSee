@@ -8,6 +8,7 @@ import {
   YAxis,
 } from "recharts";
 import "../styles/sessionchart.css";
+import "../styles/dashboard.css";
 
 const Sessionchart = ({ data }) => {
   const formatXAxis = (tickItem) => {
@@ -33,7 +34,7 @@ const Sessionchart = ({ data }) => {
           Durée moyenne des <br></br>sessions
         </h2>
       </div>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer className="responsive-container" aspect={1}>
         <LineChart
           data={data}
           margin={{ top: 0, left: 15, right: 15, bottom: 10 }}

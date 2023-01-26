@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 import "../styles/scorechart.css";
+import "../styles/dashboard.css";
 
 const Title = styled.h2`
   position: absolute;
@@ -45,7 +46,7 @@ const Scorechart = ({ data }) => {
   return (
     <div className="scorechart">
       <Title>Score</Title>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer className="responsive-container" aspect={1}>
         <PieChart>
           <Pie
             data={fakePie}
