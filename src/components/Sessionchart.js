@@ -9,6 +9,7 @@ import {
 } from "recharts";
 import "../styles/charts/sessionchart.css";
 import "../styles/dashboard.css";
+import propTypes from "prop-types";
 
 /**
  * Sessionchart component is a line chart that displays the average session duration over 7 days.
@@ -84,3 +85,12 @@ const Sessionchart = ({ data }) => {
 };
 
 export default Sessionchart;
+
+Sessionchart.propTypes = {
+  data: propTypes.arrayOf(
+    propTypes.shape({
+      day: propTypes.number,
+      sessionLength: propTypes.number,
+    })
+  ).isRequired,
+};

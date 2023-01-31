@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import propTypes from "prop-types";
 
 import "../styles/charts/scorechart.css";
 import "../styles/dashboard.css";
@@ -92,3 +93,14 @@ const Scorechart = ({ data }) => {
   );
 };
 export default Scorechart;
+
+/*Scorechart.propTypes = {
+  data: propTypes.object,
+};*/
+
+Scorechart.propTypes = {
+  data: propTypes.shape({
+    todayScore: propTypes.number,
+    score: propTypes.number,
+  }).isRequired,
+};

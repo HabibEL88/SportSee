@@ -11,7 +11,6 @@ import {
 } from "recharts";
 import propTypes from "prop-types";
 import "../styles/charts/activitychart.css";
-import { type } from "@testing-library/user-event/dist/type";
 
 /**
  * Function that change the x-axis format date and take the first digit
@@ -25,7 +24,7 @@ const formatXAxis = (tickItem) => {
 };
 
 /**
- * CustomTooltip is a function that returns a tooltip with weith and calories data
+ * CustomTooltip is a function that returns a tooltip with weigth and calories data
  * @params {Boolean} active - Boolean indicating whether the tooltip is active
  * @params {Array} payload - Array of data to be displayed in the tooltip
  * @returns {JSX} -Returns a JSX element if the active prop is true and payload has data,
@@ -33,7 +32,6 @@ const formatXAxis = (tickItem) => {
  */
 
 const CustomTooltip = ({ active, payload }) => {
-  console.log(active);
   if (active && payload && payload.length > 0) {
     return (
       <div
@@ -140,6 +138,17 @@ const Activity = ({ data }) => {
 };
 
 export default Activity;
-Activity.propTypes = {
+
+/*Activity.propTypes = {
   data: propTypes.object.isRequired,
+};*/
+
+Activity.propTypes = {
+  data: propTypes.arrayOf(
+    propTypes.shape({
+      day: propTypes.string,
+      kilogram: propTypes.number,
+      calories: propTypes.number,
+    })
+  ).isRequired,
 };

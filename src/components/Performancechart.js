@@ -18,6 +18,7 @@ import "../styles/dashboard.css";
  */
 
 const Performancechart = ({ data }) => {
+  console.log(data);
   const getKindValue = (kindData) => {
     return data.kind[kindData.kind];
   };
@@ -50,6 +51,18 @@ const Performancechart = ({ data }) => {
 
 export default Performancechart;
 
-Performancechart.propTypes = {
+/*Performancechart.propTypes = {
   data: propTypes.object,
+};*/
+
+Performancechart.propTypes = {
+  data: propTypes.shape({
+    data: propTypes.arrayOf(
+      propTypes.shape({
+        kind: propTypes.number.isRequired,
+        value: propTypes.number.isRequired,
+      })
+    ).isRequired,
+    kind: propTypes.objectOf(propTypes.string).isRequired,
+  }).isRequired,
 };

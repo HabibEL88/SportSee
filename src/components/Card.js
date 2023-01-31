@@ -1,5 +1,13 @@
 import React from "react";
 import MaterialIcons from "./MaterialIcons";
+import propTypes from "prop-types";
+
+/**
+@file Card component is responsible for displaying information in a compact way.
+@param {string} Key - The identifier of the information to be displayed.
+@param {string} value - The value of the information to be displayed.
+@returns {JSX.Element} - A react component that displays the information.
+*/
 
 const Card = ({ Key, value }) => {
   const logo = require(`../assets/${Key}.webp`);
@@ -39,3 +47,8 @@ const Card = ({ Key, value }) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+  Key: propTypes.string.isRequired,
+  value: propTypes.number.isRequired,
+};
