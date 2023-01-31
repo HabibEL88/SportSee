@@ -9,30 +9,17 @@ import {
   redirect,
 } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+import { getDashboardDataAsync } from "./services/userservice";
 
 const router = createBrowserRouter([
   {
     path: "*",
-    loader: async () => {
-      return redirect("/user/12");
-    },
+    loader: async () => redirect("/user/12"),
   },
   {
     path: "/user/:id",
     element: <App />,
-    loader: async ({ params }) => {
-      const result = (
-        await Promise.all([
-          fetch(`http://localhost:3001/user/${params.id}`),
-          fetch(`http://localhost:3001/user/${params.id}/activity`),
-          fetch(`http://localhost:3001/user/${params.id}/average-sessions`),
-          fetch(`http://localhost:3001/user/${params.id}/performance`),
-        ])
-      ).map((r) => r.json());
-
-      const [user, activity, average, performance] = await Promise.all(result);
-      return { user, activity, average, performance };
-    },
+    loader: async ({ params }) => await getDashboardDataAsync(params.id),
   },
 ]);
 
