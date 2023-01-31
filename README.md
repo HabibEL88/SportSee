@@ -23,12 +23,12 @@ You work as a developer at SportSee, a startup dedicated to sports coaching. In 
 Afer all depenencies are correctly install.
 You will have to launch te back-end before the front-end.
 
-Access to the back-end folder and laucnh it with: 
+Access to the back-end folder and launch it with: 
 ```
 yarn dev
 ```
 
-Access to the front-end folder and laucnh it with:
+Access to the front-end folder and launch it with:
 ```
 npm start
 ```
