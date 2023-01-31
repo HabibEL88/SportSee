@@ -9,34 +9,58 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import propTypes from "prop-types";
+import "../styles/charts/activitychart.css";
+import { type } from "@testing-library/user-event/dist/type";
 
-import "../styles/activitychart.css";
+/**
+ * Function that change the x-axis format date and take the first digit
+ * @params {string} tickItem - this is the date to be formatted
+ * @returns {string} The date formatted
+ */
+
+const formatXAxis = (tickItem) => {
+  const date = new Date(tickItem);
+  return date.getDate();
+};
+
+/**
+ * CustomTooltip is a function that returns a tooltip with weith and calories data
+ * @params {Boolean} active - Boolean indicating whether the tooltip is active
+ * @params {Array} payload - Array of data to be displayed in the tooltip
+ * @returns {JSX} -Returns a JSX element if the active prop is true and payload has data,
+ * else return null
+ */
+
+const CustomTooltip = ({ active, payload }) => {
+  console.log(active);
+  if (active && payload && payload.length > 0) {
+    return (
+      <div
+        className="custom-tooltip"
+        style={{ color: "white", fontSize: "10px" }}
+      >
+        <p
+          style={{ margin: "10px 10px 20px 10px" }}
+          className="label"
+        >{`${payload[0].value} kg`}</p>
+        <p
+          style={{ margin: "10px 10px" }}
+          className="label"
+        >{`${payload[1].value} Kcal`}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
+/**
+ * A functional component that renders a bar chart representing aily activity data
+ * @params {array} data - the data to display in the bar chart
+ * @returns {JSX} A react component that renders the bar chart
+ */
 
 const Activity = ({ data }) => {
-  const formatXAxis = (tickItem) => {
-    const date = new Date(tickItem);
-    return date.getDate();
-  };
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length > 0) {
-      return (
-        <div
-          className="custom-tooltip"
-          style={{ color: "white", fontSize: "10px" }}
-        >
-          <p
-            style={{ margin: "10px 10px 20px 10px" }}
-            className="label"
-          >{`${payload[0].value} kg`}</p>
-          <p
-            style={{ margin: "10px 10px" }}
-            className="label"
-          >{`${payload[1].value} Kcal`}</p>
-        </div>
-      );
-    }
-    return null;
-  };
   return (
     <div className="Activity">
       <ResponsiveContainer
@@ -116,3 +140,6 @@ const Activity = ({ data }) => {
 };
 
 export default Activity;
+Activity.propTypes = {
+  data: propTypes.object.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import propTypes from "prop-types";
 import {
   Radar,
   RadarChart,
@@ -7,8 +8,14 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
-import "../styles/Performancechart.css";
+import "../styles/charts/Performancechart.css";
 import "../styles/dashboard.css";
+
+/**
+ *  Renders performance chart using Recharts library.
+ * @param {object} data data object
+ * @return {ReactNode} jsx injected in DOM element
+ */
 
 const Performancechart = ({ data }) => {
   const getKindValue = (kindData) => {
@@ -40,4 +47,9 @@ const Performancechart = ({ data }) => {
     </div>
   );
 };
+
 export default Performancechart;
+
+Performancechart.propTypes = {
+  data: propTypes.object,
+};

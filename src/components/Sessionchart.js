@@ -7,8 +7,16 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import "../styles/sessionchart.css";
+import "../styles/charts/sessionchart.css";
 import "../styles/dashboard.css";
+
+/**
+ * Sessionchart component is a line chart that displays the average session duration over 7 days.
+ 
+ * @param {Array} data - An array of objects with `day` and `sessionLength` properties to display on the chart
+ * @returns {React.Element} A line chart with average session duration for 7 days
+
+ */
 
 const Sessionchart = ({ data }) => {
   const formatXAxis = (tickItem) => {

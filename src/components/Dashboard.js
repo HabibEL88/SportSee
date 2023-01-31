@@ -6,15 +6,26 @@ import Card from "../components/Card";
 
 import "../styles/dashboard.css";
 import { useLoaderData } from "react-router-dom";
+/**
+ * Dashboard component which displays the user data
+ * @returns {JSX} A react component to render on the dashboard page
+ */
 
 const Dashboard = () => {
+  /*
+Fetching data from useLoaderData
+@type {{ 
+    user: { data: { userInfos: { firstName: string } } },
+    activity: { data: { sessions: object } },
+    average: { data: { sessions: object } },
+    performance: object 
+      }}
+*/
   const userData = useLoaderData();
-  const user = { ...userData.user.data };
-  const activity = { ...userData.activity.data };
-  const average = { ...userData.average.data };
-  const performance = { ...userData.performance.data };
-
-  console.log(user);
+  const user = userData.user.data;
+  const activity = userData.activity.data;
+  const average = userData.average.data;
+  const performance = userData.performance.data;
 
   return (
     <div className="firstcontainer">

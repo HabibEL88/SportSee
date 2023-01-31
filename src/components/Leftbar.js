@@ -7,6 +7,12 @@ import MaterialIcons from "./MaterialIcons";
 
 import "../styles/leftbar.css";
 
+/**
+ * A component that renders the navigation bar on the left side of the app
+ *Renders the left navigation bar
+ *@returns {JSX} Left navigation bar component
+ */
+
 const Leftbar = () => {
   return (
     <nav className="leftbar">

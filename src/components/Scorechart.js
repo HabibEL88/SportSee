@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-import "../styles/scorechart.css";
+import "../styles/charts/scorechart.css";
 import "../styles/dashboard.css";
 
 const Title = styled.h2`
