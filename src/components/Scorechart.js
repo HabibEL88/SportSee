@@ -35,6 +35,13 @@ const Score = styled.span`
   font-size: 26px;
 `;
 
+/**
+
+A score chart component that displays a pie chart with a score value.
+@param {object} data An object with a todayScore or score property
+@returns {ReactNode} JSX that gets injected in a DOM element
+*/
+
 const Scorechart = ({ data }) => {
   const fakePie = [{ value: 100 }];
 
