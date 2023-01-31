@@ -6,6 +6,7 @@ import Card from "../components/Card";
 
 import "../styles/dashboard.css";
 import { useLoaderData } from "react-router-dom";
+
 /**
  * Dashboard component which displays the user data
  * @returns {JSX} A react component to render on the dashboard page

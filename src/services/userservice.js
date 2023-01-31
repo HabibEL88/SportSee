@@ -1,4 +1,5 @@
 const API_ROOT = "http://localhost:3001";
+import propTypes from "prop-types";
 
 export const getUserAsync = (userId) => fetch(`${API_ROOT}/user/${userId}`);
 export const getUserActivityAsync = (userId) =>
