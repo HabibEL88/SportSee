@@ -1,39 +1,70 @@
-const API_ROOT = "http://localhost:3001";
-import propTypes from "prop-types";
+import {
+  USER_MAIN_DATA,
+  USER_ACTIVITY,
+  USER_AVERAGE_SESSIONS,
+  USER_PERFORMANCE,
+} from "./mockdata";
 
-export const getUserAsync = (userId) => fetch(`${API_ROOT}/user/${userId}`);
-export const getUserActivityAsync = (userId) =>
-  fetch(`${API_ROOT}/user/${userId}/activity`);
-export const getUserAverageSessionsAsync = (userId) =>
-  fetch(`${API_ROOT}/user/${userId}/average-sessions`);
-export const getUserPerformanceAsync = (userId) =>
-  fetch(`${API_ROOT}/user/${userId}/performance`);
+const API_ROOT = "http://localhost:3001";
+
+export const getUserAsync = (userId) => {
+  try {
+    fetch(`${API_ROOT}/user/${userId}`);
+  } catch (error) {
+    console.log("getUserError: ", error);
+  }
+};
+export const getUserActivityAsync = (userId) => {
+  try {
+    fetch(`${API_ROOT}/user/${userId}/activity`);
+  } catch (error) {
+    console.log("getUserActivityError: ", error);
+  }
+};
+
+export const getUserAverageSessionsAsync = (userId) => {
+  try {
+    fetch(`${API_ROOT}/user/${userId}/average-sessions`);
+  } catch (error) {
+    console.log("getUserAverageSessionsError: ", error);
+  }
+};
+
+export const getUserPerformanceAsync = (userId) => {
+  try {
+    fetch(`${API_ROOT}/user/${userId}/performance`);
+  } catch (error) {
+    console.log("getUserPerformanceError: ", error);
+  }
+};
 
 /**
  * Asynchronous service calls to retrieve data to display the dashboard.
  * @params {userId} The ID of the User as an integer
  * @returns A object containing all the required data (user, activity, average, performance)
  */
-export const getDashboardDataAsync = async (userId) => {
-  const userReq = getUserAsync(userId);
-  const userActivityReq = getUserActivityAsync(userId);
-  const userAverageSessionsReq = getUserAverageSessionsAsync(userId);
-  const userPerformanceReq = getUserPerformanceAsync(userId);
 
-  //   const result = await Promise.all(
-  //     (
-  //       await Promise.all([
-  //         userReq,
-  //         userActivityReq,
-  //         userAverageSessionsReq,
-  //         userPerformanceReq,
-  //       ])
-  //     ).map((r) => r.json())
-  //   );
-  return {
-    user: await (await userReq).json(),
-    activity: await (await userActivityReq).json(),
-    average: await (await userAverageSessionsReq).json(),
-    performance: await (await userPerformanceReq).json(),
-  };
+export const getDashboardDataAsync = async (userId) => {
+  try {
+    const userReq = getUserAsync(userId);
+    const userActivityReq = getUserActivityAsync(userId);
+    const userAverageSessionsReq = getUserAverageSessionsAsync(userId);
+    const userPerformanceReq = getUserPerformanceAsync(userId);
+
+    return {
+      user: await (await userReq).json(),
+      activity: await (await userActivityReq).json(),
+      average: await (await userAverageSessionsReq).json(),
+      performance: await (await userPerformanceReq).json(),
+    };
+  } catch (error) {
+    console.log("Error: ", error);
+    console.error("API down using mocked data");
+    return {
+      user: USER_MAIN_DATA,
+      activity: USER_ACTIVITY,
+      average: USER_AVERAGE_SESSIONS,
+      performance: USER_PERFORMANCE,
+    };
+  }
 };
